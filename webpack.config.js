@@ -33,14 +33,28 @@ module.exports = {
     },
     {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass'],
+        loaders: ['style', 'css', 'autoprefixer?browsers=last 2 version', 'sass'],
         include: path.join(__dirname, 'sass')
-    }]
+    },
+    // we are loading in bootstrap css
+    // we need to apply the style loader
+    {
+      test: /\.css$/,
+      loaders: ['style','css'],
+      include: path.join(__dirname, 'bower_components/bootstrap')
+    },
+    {
+      test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+      loader: 'url-loader?limit=100000'
+    }
+  ]
   },
   resolve: {
       root: [path.join(__dirname, 'bower_components')],
       alias: {
-        'thorax': '../bower_components/thorax/thorax.js'
+        'thorax': '../bower_components/thorax/thorax.js',
+        'bootstrap_css': '../bower_components/bootstrap/dist/css/bootstrap.css',
+        'bootstrap_js': '../bower_components/bootstrap/dist/js/bootstrap.js',
       }
   }
 };

@@ -1,14 +1,15 @@
 {
-  "name": "alerts-ui",
+  "name": "thorax-date-interval",
   "version": "0.0.1",
-  "homepage": "https://github.com/memeticlabs/alerts-ui",
+  "homepage": "https://github.com/hoodwink73/thorax-date-interval",
   "authors": [
     "Arijit Bhattacharya <hoodwink73@live.com>"
   ],
-  "description": "List incoming alerts for a brand",
-  "main": "main.js",
+  "description": "Thorax view to select date interval",
+  "main": "dist/thorax-date-interval.js",
   "keywords": [
-    "alerts"
+    "date-interval",
+    "thorax-view"
   ],
   "license": "MIT",
   "ignore": [

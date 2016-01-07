@@ -6,7 +6,7 @@ import '../sass/main.scss';
 import 'imports!thorax';
 import moment from 'moment';
 
-import DateRangeView from './daterange';
+import DateRangeView from './thorax-date-interval';
 import dateRangeTemplate from '../templates/daterange-example.hbs';
 
 const view = new DateRangeView({

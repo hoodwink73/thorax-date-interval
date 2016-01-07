@@ -1,5 +1,63 @@
-$color: gold;
+@import './variables';
 
-body {
-  background-color: $color;
+
+
+.date-range-calender-wrapper {
+  margin-top: 50px;
+  border: 1px solid $border-color;
+
+  .from-wrapper, .to-wrapper {
+    padding: 5px 10px;
+    text-align: center;
+    .title {
+      display: inline-block;
+      width: 100px;
+      color: $gray;
+      margin-bottom: 5px;
+      border-radius: 15px;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  .to-wrapper {
+    border-left: 1px solid $border-color;
+  }
+}
+
+.footer {
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    .submit-button {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      font-size: 14px;
+      color: white;
+      background-color: lighten($primary-color, 10%);
+      text-align: center;
+      cursor: pointer;
+      height: 40px;
+      line-height: 40px;
+      transition: background 300ms ease-in;
+      &:hover {
+        background-color: $primary-color;
+      }
+    }
+}
+
+// change date picker theme
+.bootstrap-datetimepicker-widget .day.active {
+  background-color: $primary-color;
+  &:hover {
+    background-color: $primary-color;
+  }
+}
+
+.bootstrap-datetimepicker-widget table td.today:before {
+  border-bottom-color: $primary-color;
 }

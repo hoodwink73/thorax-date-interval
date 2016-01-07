@@ -1,12 +1,60 @@
-# Boilerplate for Webpack/ES6(Babel) project using Thorax and Backbone
+# thorax-date-interval
+This repo offers a thorax view which can used to select a **date interval**.
 
-Just clone this and you can start using Backbone with ES6.
+It builds on a [bootstrap 3 datepicker library](http://eonasdan.github.io/bootstrap-datetimepicker/)
 
-A better module system and new ES6 syntax shouldn't be limited to newer technologies like React. For those who have constraints to use Backbone in their work, they still should be able to include ES6 syntax and keep learning.
+## Config
+When instantiating a view, a `config` object can be passed into the `extend` method
+
+`config.validators` -  a object of functions to validate allowed date intervals and
+`defaultInterval` -  automatically select the 'to' date if `from` date is selected
+`minDate` - the earliest date that can be selected by the user
+`maxDate` - the latest date that can be selected by the user
+
+``` javascript
+const view = new DateRangeView({
+  template: Handlebars.compile(dateRangeTemplate),
+  config: {
+    validators: {
+      cannotExceedThreeMonths (from, to) {
+        if (to.isSameOrBefore(from.add(3, 'months'))) {
+          return true;
+        } else {
+          return {
+            message: `The interval could not be more than 3 months`
+          }
+        }
+      },
+      shouldBeAWeekApart (from, to) {
+        if (to.isSameOrAfter(from.add(7, 'days'))) {
+          return true;
+        } else {
+          return {
+            message: `Minimum interval between the selected dates should be at
+                      least seven days`
+          }
+        }
+      }
+    },
+    minDate: {
+      from: moment().subtract(7, 'days')
+    },
+    submitButtonText: 'Download Report'
+  }
+}).render();
+```
+## Events
+
+### change:date
+Whenever a user selects date, this event will get fired. The handler will be passed a change object, which will tell the which calendar emitted the event (from or to), the new date and the old date
+
+### validation:error
+When the selected date cannot be validated by the validators. This event can be handled to show error messages.
 
 ## Usage
 ```
 npm install
+bower install
 npm start
 ```
 

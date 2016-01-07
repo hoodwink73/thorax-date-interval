@@ -20,9 +20,12 @@ module.exports = {
     ),
     new webpack.ProvidePlugin({
         $: 'jquery',
+        'jQuery': 'jquery',
+        'window.jQuery': 'jquery',
         'Handlebars': 'handlebars',
         '_': 'underscore',
         'Backbone': 'backbone',
+        'moment': 'moment',
     })
   ],
   module: {
@@ -41,12 +44,17 @@ module.exports = {
     {
       test: /\.css$/,
       loaders: ['style','css'],
-      include: path.join(__dirname, 'bower_components/bootstrap')
+      include: [path.join(__dirname, 'bower_components/bootstrap'), path.join(__dirname, 'bower_components/eonasdan-bootstrap-datetimepicker')]
     },
     {
       test: /\.(png|woff|woff2|eot|ttf|svg)$/,
       loader: 'url-loader?limit=100000'
-    }
+    },
+    {
+    test: /\.hbs$/,
+    loaders: ['raw'],
+    include: path.join(__dirname, 'templates')
+  },
   ]
   },
   resolve: {
@@ -54,7 +62,10 @@ module.exports = {
       alias: {
         'thorax': '../bower_components/thorax/thorax.js',
         'bootstrap_css': '../bower_components/bootstrap/dist/css/bootstrap.css',
+        'datepicker_css': '../bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
         'bootstrap_js': '../bower_components/bootstrap/dist/js/bootstrap.js',
+        'datepicker_js': '../bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+        'moment': 'moment/moment.js'
       }
   }
 };

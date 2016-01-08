@@ -64,7 +64,7 @@ module.exports = {
         'bootstrap_css': '../bower_components/bootstrap/dist/css/bootstrap.css',
         'datepicker_css': '../bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
         'bootstrap_js': '../bower_components/bootstrap/dist/js/bootstrap.js',
-        'datepicker_js': '../bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+        'datepicker': '../bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
         'moment': 'moment/moment.js'
       }
   }

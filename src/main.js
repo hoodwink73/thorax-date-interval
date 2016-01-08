@@ -1,7 +1,7 @@
 import 'bootstrap_css';
 import 'bootstrap_js';
 import 'datepicker_css';
-import 'datepicker_js';
+import 'datepicker';
 import '../sass/main.scss';
 import 'imports!thorax';
 import moment from 'moment';

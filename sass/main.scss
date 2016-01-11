@@ -1,9 +1,12 @@
 @import './variables';
 
-
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
 
 .date-range-calender-wrapper {
-  margin-top: 50px;
   border: 1px solid $border-color;
 
   .from-wrapper, .to-wrapper {
@@ -50,12 +53,56 @@
     }
 }
 
-// change date picker theme
-.bootstrap-datetimepicker-widget .day.active {
-  background-color: $primary-color;
-  &:hover {
-    background-color: $primary-color;
+.quick-actions-wrapper {
+  border: 1px solid $border-color;
+  padding: 10px 5px;
+  ul {
+    columns: 100px 3;
   }
+
+  .action {
+    text-align: center;
+    line-height: 2;
+    padding: 3px 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    &.active {
+      background-color: lighten($primary-color, 30%);
+    }
+    &:hover {
+      background-color: lighten($primary-color, 30%);
+    }
+
+    &[data-state="disabled"] {
+      color: red;
+      opacity: 0.3;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+// change date picker theme
+.bootstrap-datetimepicker-widget .day {
+  &.active {
+    background-color: $primary-color;
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    color: red;
+
+    &:hover {
+      opacity: 0.1;
+    }
+  }
+
 }
 
 .bootstrap-datetimepicker-widget table td.today:before {

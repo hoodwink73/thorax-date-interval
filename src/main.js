@@ -22,20 +22,52 @@ const view = new DateRangeView({
           }
         }
       },
-      shouldBeAWeekApart (from, to) {
-        if (to.isSameOrAfter(from.add(7, 'days'))) {
-          return true;
-        } else {
-          return {
-            message: `Minimum interval between the selected dates should be at
-                      least seven days`
-          }
-        }
-      }
+      // shouldBeAWeekApart (from, to) {
+      //   if (to.isSameOrAfter(from.add(7, 'days'))) {
+      //     return true;
+      //   } else {
+      //     return {
+      //       message: `Minimum interval between the selected dates should be at
+      //                 least seven days`
+      //     }
+      //   }
+      // }
     },
     minDate: {
       from: moment().subtract(7, 'days')
     },
+    quickActions: [
+      {
+        title: 'Yesterday',
+        from: moment().subtract(1, 'day'),
+        to: moment().subtract(1, 'day')
+      },
+      {
+        title: 'Today',
+        from: moment(),
+        to: moment()
+      },
+      {
+        title: 'Previous Week',
+        from: moment().subtract(1, 'weeks').startOf('isoWeek'),
+        to: moment().subtract(1, 'weeks').endOf('isoWeek')
+      },
+      {
+        title: 'Last 7 Days',
+        from: moment().subtract(7, 'days'),
+        to: moment()
+      },
+      {
+        title: 'Previous Month',
+        from: moment().subtract(1, 'months').startOf('month'),
+        to: moment().subtract(1, 'months').endOf('month')
+      },
+      {
+        title: 'Last 30 days',
+        from: moment().subtract(30, 'days'),
+        to: moment()
+      },
+    ],
     submitButtonText: 'Download Report'
   }
 }).render();

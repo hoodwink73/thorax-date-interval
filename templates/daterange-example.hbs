@@ -1,17 +1,34 @@
-<div class="row date-range-calender-wrapper">
-    <div class="col-md-6 from-wrapper">
-      <div class="title">From</div>
-      <div id="from"></div>
+<div class="date-interval-container">
+  {{#if config.quickActions}}
+    <div class="row">
+      <div class="col-md-12 quick-actions-wrapper">
+        <ul>
+          {{#each config.quickActions}}
+            <li class="action"
+              data-title="{{this.title}}"
+              data-state="{{#if this.disabled}}disabled{{else}}enabled{{/if}}">
+              {{this.title}}
+            </li>
+          {{/each}}
+        </ul>
+      </div>
     </div>
-    <div class="col-md-6 to-wrapper">
-        <div class="title">To</div>
-        <div id="to"></div>
-    </div>
-</div>
-<div class="row footer">
-  <div class="col-md-12 submit-wrapper">
-    <div class="submit-button">
-      {{config.submitButtonText}}
+  {{/if}}
+  <div class="row date-range-calender-wrapper">
+      <div class="col-md-6 from-wrapper">
+        <div class="title">From</div>
+        <div id="from"></div>
+      </div>
+      <div class="col-md-6 to-wrapper">
+          <div class="title">To</div>
+          <div id="to"></div>
+      </div>
+  </div>
+  <div class="row footer">
+    <div class="col-md-12 submit-wrapper">
+      <div class="submit-button">
+        {{config.submitButtonText}}
+      </div>
     </div>
   </div>
 </div>

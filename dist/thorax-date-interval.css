@@ -1,5 +1,9 @@
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
 .date-range-calender-wrapper {
-  margin-top: 50px;
   border: 1px solid #A2B1BA; }
   .date-range-calender-wrapper .from-wrapper, .date-range-calender-wrapper .to-wrapper {
     padding: 5px 10px;
@@ -37,10 +41,38 @@
     .footer .submit-button:hover {
       background-color: #55d0d0; }
 
+.quick-actions-wrapper {
+  border: 1px solid #A2B1BA;
+  padding: 10px 5px; }
+  .quick-actions-wrapper ul {
+    columns: 100px 3; }
+  .quick-actions-wrapper .action {
+    text-align: center;
+    line-height: 2;
+    padding: 3px 5px;
+    border-radius: 20px;
+    cursor: pointer; }
+    .quick-actions-wrapper .action.active {
+      background-color: #cdf1f1; }
+    .quick-actions-wrapper .action:hover {
+      background-color: #cdf1f1; }
+    .quick-actions-wrapper .action[data-state="disabled"] {
+      color: red;
+      opacity: 0.3;
+      cursor: not-allowed; }
+      .quick-actions-wrapper .action[data-state="disabled"]:hover {
+        background-color: transparent; }
+
 .bootstrap-datetimepicker-widget .day.active {
   background-color: #55d0d0; }
   .bootstrap-datetimepicker-widget .day.active:hover {
     background-color: #55d0d0; }
+
+.bootstrap-datetimepicker-widget .day.disabled {
+  opacity: 0.3;
+  color: red; }
+  .bootstrap-datetimepicker-widget .day.disabled:hover {
+    opacity: 0.1; }
 
 .bootstrap-datetimepicker-widget table td.today:before {
   border-bottom-color: #55d0d0; }

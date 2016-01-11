@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const rename = require('gulp-rename');
 const babel = require('gulp-babel');
 const sass = require('gulp-sass');
+const del = require('del');
 
 
 gulp.task('babel-amd-transform', function () {
@@ -17,6 +18,8 @@ gulp.task('babel-amd-transform', function () {
 });
 
 gulp.task('copy-to-dist', function () {
+	del.sync('dist/*');
+
 	return gulp.src('src/thorax-date-interval.js')
 		.pipe(rename(function (path) {
 			path.basename += '.es6'

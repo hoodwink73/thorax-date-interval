@@ -3,6 +3,7 @@ const rename = require('gulp-rename');
 const babel = require('gulp-babel');
 const sass = require('gulp-sass');
 const del = require('del');
+const autoprefixer = require('gulp-autoprefixer');
 
 
 gulp.task('babel-amd-transform', function () {
@@ -30,6 +31,10 @@ gulp.task('copy-to-dist', function () {
 gulp.task('sass', function () {
   gulp.src('./sass/*.scss')
     .pipe(sass().on('error', sass.logError))
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
     .pipe(rename('thorax-date-interval.css'))
     .pipe(gulp.dest('./dist/'));
 });

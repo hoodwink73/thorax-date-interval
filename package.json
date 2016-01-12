@@ -36,6 +36,7 @@
     "expose-loader": "^0.7.1",
     "file-loader": "^0.8.5",
     "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-babel": "^6.1.1",
     "gulp-copy": "0.0.2",
     "gulp-rename": "^1.2.2",

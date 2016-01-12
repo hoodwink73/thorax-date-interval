@@ -45,6 +45,8 @@ ul, li {
   border: 1px solid #A2B1BA;
   padding: 10px 5px; }
   .quick-actions-wrapper ul {
+    -webkit-columns: 100px 3;
+    -moz-columns: 100px 3;
     columns: 100px 3; }
   .quick-actions-wrapper .action {
     text-align: center;

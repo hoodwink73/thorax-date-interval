@@ -53,9 +53,6 @@ export default Thorax.View.extend({
         'submit': this.$('.submit-button')
       }
       this._initCalendars();
-      // during initialization `change:date` won't be fired
-      // hence we need to update the footer manually
-      this._setSelectedDateInFooter();
     },
     'change:date': function (changeObj) {
       // event handler whenever a date changes on any of the calendars
@@ -67,8 +64,6 @@ export default Thorax.View.extend({
         if (changeObj.calendar === 'from') {
           this._setDefaultForTo();
         }
-
-        this._setSelectedDateInFooter();
       }
     },
     'validation:error': function (error) {
@@ -289,6 +284,8 @@ export default Thorax.View.extend({
      this.setDate('to', this.getDate('from').add(this.config.defaultInterval, 'days'));
   },
   _setSelectedDateInFooter () {
+    // this reflect the date interval selected in the download button
+    // not in use right now, but can be used if need
     const buttonPrefix = this.config.submitButtonText || 'Download';
 
 

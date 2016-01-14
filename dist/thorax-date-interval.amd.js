@@ -63,9 +63,6 @@ define(['exports'], function (exports) {
           'submit': this.$('.submit-button')
         };
         this._initCalendars();
-        // during initialization `change:date` won't be fired
-        // hence we need to update the footer manually
-        this._setSelectedDateInFooter();
       },
 
       'change:date': function changeDate(changeObj) {
@@ -78,8 +75,6 @@ define(['exports'], function (exports) {
           if (changeObj.calendar === 'from') {
             this._setDefaultForTo();
           }
-
-          this._setSelectedDateInFooter();
         }
       },
       'validation:error': function validationError(error) {
@@ -310,6 +305,8 @@ define(['exports'], function (exports) {
       this.setDate('to', this.getDate('from').add(this.config.defaultInterval, 'days'));
     },
     _setSelectedDateInFooter: function _setSelectedDateInFooter() {
+      // this reflect the date interval selected in the download button
+      // not in use right now, but can be used if need
       var buttonPrefix = this.config.submitButtonText || 'Download';
 
       var fromDate = this.getDate('from') && this.getDate('from').format('DD MMM');

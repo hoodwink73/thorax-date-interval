@@ -5,7 +5,6 @@ const sass = require('gulp-sass');
 const del = require('del');
 const autoprefixer = require('gulp-autoprefixer');
 
-
 gulp.task('babel-amd-transform', function () {
 	return gulp.src('src/thorax-date-interval.js')
 		.pipe(babel({
@@ -38,6 +37,5 @@ gulp.task('sass', function () {
     .pipe(rename('thorax-date-interval.css'))
     .pipe(gulp.dest('./dist/'));
 });
-
 
 gulp.task('build', ['copy-to-dist', 'babel-amd-transform', 'sass'])

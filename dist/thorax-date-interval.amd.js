@@ -69,11 +69,9 @@ define(['exports'], function (exports) {
         // event handler whenever a date changes on any of the calendars
         var didValidate = this._validate();
         if (didValidate) {
-          // when the 'from' date is selected, use 'defaultInterval'
-          // to select the 'to' date. THIS HAPPENS ONLY FOR THE FIRST
-          // time a user selects FROM date
+          // the `to` date cannot be earlier than `from`
           if (changeObj.calendar === 'from') {
-            this._setDefaultForTo();
+            this.getCalendar('to').minDate(this.getDate('from'));
           }
         }
       },

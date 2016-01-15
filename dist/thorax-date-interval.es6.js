@@ -58,11 +58,9 @@ export default Thorax.View.extend({
       // event handler whenever a date changes on any of the calendars
       const didValidate = this._validate();
       if (didValidate) {
-        // when the 'from' date is selected, use 'defaultInterval'
-        // to select the 'to' date. THIS HAPPENS ONLY FOR THE FIRST
-        // time a user selects FROM date
-        if (changeObj.calendar === 'from') {
-          this._setDefaultForTo();
+        // the `to` date cannot be earlier than `from`
+        if (changeObj.calendar === 'from' ) {
+          this.getCalendar('to').minDate(this.getDate('from'));
         }
       }
     },

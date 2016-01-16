@@ -260,12 +260,12 @@ export default Thorax.View.extend({
     const {from, to} = interval;
 
     _.every(this.validators, (validator) => {
-      let result = validator.call(self, from, to);
+      let result = validator.call(this, from, to);
 
       if (_.isObject(result) && _.has(result, 'message')){
 
         if (!options.noEvents) {
-          self.trigger('validation:error', result.message);
+          this.trigger('validation:error', result.message);
         }
 
         didValidate = false;

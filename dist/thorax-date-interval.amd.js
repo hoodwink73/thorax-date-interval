@@ -271,6 +271,8 @@ define(['exports'], function (exports) {
       return didValidate;
     },
     _validateConfigValidators: function _validateConfigValidators(interval) {
+      var _this4 = this;
+
       var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
       // validates according to the validator function passed in
@@ -281,12 +283,12 @@ define(['exports'], function (exports) {
       var to = interval.to;
 
       _.every(this.validators, function (validator) {
-        var result = validator.call(self, from, to);
+        var result = validator.call(_this4, from, to);
 
         if (_.isObject(result) && _.has(result, 'message')) {
 
           if (!options.noEvents) {
-            self.trigger('validation:error', result.message);
+            _this4.trigger('validation:error', result.message);
           }
 
           didValidate = false;

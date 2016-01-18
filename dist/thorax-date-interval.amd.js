@@ -301,6 +301,16 @@ define(['exports'], function (exports) {
 
       return didValidate;
     },
+    _validateFromBeforeToAlways: function _validateFromBeforeToAlways(from, to) {
+      // `from` date should always be before `to`
+      if (to.isAfter(from) || to.isSame(from)) {
+        return true;
+      } else {
+        return {
+          message: 'The \'from\' date should always be before \'to\' date'
+        };
+      }
+    },
     _setDefaultForTo: function _setDefaultForTo() {
       this.setDate('to', this.getDate('from').add(this.config.defaultInterval, 'days'));
     },

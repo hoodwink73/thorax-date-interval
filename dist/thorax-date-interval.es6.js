@@ -28,7 +28,7 @@ export default Thorax.View.extend({
       if (!this._validateInterval(action, {noEvents: true})) {
         _.tap(action, () => action.disabled = true);
       }
-    })
+    });
 
     // when 'from' date is selected for the **first** time
     // only then we want to set the **to** date given the default interval,
@@ -277,6 +277,16 @@ export default Thorax.View.extend({
     });
 
     return didValidate;
+  },
+  _validateFromBeforeToAlways (from, to) {
+    // `from` date should always be before `to`
+    if (to.isAfter(from) || to.isSame(from)) {
+      return true;
+    } else {
+      return {
+        message: `The 'from' date should always be before 'to' date`
+      }
+    }
   },
   _setDefaultForTo () {
      this.setDate('to', this.getDate('from').add(this.config.defaultInterval, 'days'));
